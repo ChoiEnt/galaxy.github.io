@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的星露谷日志~</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部平铺的图片 -->
+    <div id="top-banner" class="top-banner">
+        <!-- 按钮直接放在div内部以利于布局定位 -->
+        <button id="prev-btn">&#10094;</button> <!-- 使用HTML字符代码添加箭头图标 -->
+        <button id="next-btn">&#10095;</button>
+    </div>
+    <!-- 主内容区 -->
+    <div class="container" id="main-content">
+        <div class="content-section">
+            <h2 data-section="mylogo"></h2>
+            <img src="灰鸡.png" alt="Icon" />
+        </div>
+        <div class="content-section">
+            <h2 data-section="introduction" class="active-header">游戏简介</h2>
+        </div>
+
+        <div class="content-section">
+
+            <h2 data-section="favorite-character" class="active-header">角色介绍</h2>
+        </div>
+
+        <div class="content-section">
+            <h2 data-section="music" class="active-header">音乐分享</h2>
+        </div>
+
+        <div class="content-section">
+            <h2 data-section="feedback" class="active-header">留言板</h2>
+        </div>
+    </div>
+    <!-- 用于显示额外内容的容器 -->
+    <div id="introduction-more" class="extra-content" style="display: none;">
+        <div class="title-with-icon">
+            <img src="星之果实.jpg" alt="Icon" />
+            <h3 class="custom-underline">关于作品</h3>
+        </div>
+        <div class="text-container">
+            <!-- 引言段落 -->
+            <p>
+                《星露谷物语》（Stardew Valley）是一款独立开发的模拟经营游戏，由ConcernedApe（Eric Barone）设计并开发。
+            </p>
+
+            <!-- 故事背景 -->
+            <p>
+                游戏的故事发生在星露谷，这是一个被城市生活压垮的主角继承了祖父的一片废弃农场后决定来到的地方。玩家的目标是从零开始，经营和恢复这块土地往昔的辉煌。通过种植作物、养殖动物、采矿、钓鱼、收集资源以及和村庄的居民建立友好关系，玩家可以逐步扩大农场，改善个人生活品质，并探索周围的环境与秘密。
+            </p>
+        </div>
+        <!-- 游戏特色标题 -->
+        <img src="作者.jpg" alt="封面">
+        <div class="title-with-icon">
+            <img src="咖啡.jpg" alt="Icon" />
+            <h3>游戏特色</h3>
+        </div>
+        <div class="text-container">
+            <!-- 游戏特色列表 -->
+            <ul>
+                <li><strong>多样化的农场经营：</strong>玩家可以自由选择种植各种作物、养殖动物和搭建农场设施。每个季节都有不同的作物可以种植，以及多种方法来扩展和美化你的农场。</li>
+                <li><strong>角色交互与发展：</strong>星露谷中有超过30个NPC，每个人都有自己的故事、日程和兴趣。通过与他们交流，玩家可以发展友情，甚至与某些角色发展为浪漫关系，并最终结婚和生子。</li>
+                <li><strong>探索与冒险：</strong>游戏中包含了一个庞大的地牢系统，分布在矿山中。玩家可以在其中战斗、探索和寻找珍贵资源。</li>
+                <li><strong>季节节日和活动：</strong>村庄会根据四季的变化举办各种节日和活动，玩家可以参与其中互动、赢取奖品和加深与村民之间的关系。</li>
+                <li><strong>自定义与创作：</strong>玩家可以自由定制角色外观、农场布局，甚至是家中的装饰。此外，游戏支持MOD，玩家能以此来添加新的物品、特性和游戏玩法元素。</li>
+            </ul>
+
+            <!-- 结尾段落 -->
+            <p>
+                总体来说，《星露谷物语》是一款具有放松治愈元素的游戏，它不仅仅是关于农场经营，更是玩家逃避现实喧嚣、体验乡村宁静生活的一个机会。无论是独自探索星露谷的每个角落，还是与朋友们一起在线共享乐趣，这款游戏都能提供一种独特且难忘的体验。
+            </p>
+        </div>
+        <div class="title-with-icon">
+            <img src="杨桃.jpg" alt="Icon" />
+            <h3>站外导航</h3>
+        </div>
+        <div class="external-links">        
+                <ul>
+                    <li>
+                        <a href="https://www.stardewvalley.net/" target="_blank">
+                            <img src="五彩贝壳.jpg" alt="Icon 1" />星露谷官网
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://xinglugu.huijiwiki.com/wiki/" target="_blank">
+                            <img src="铱矿石.png" alt="Icon 2" />星露谷维基百科
+                        </a>
+                    </li>
+                </ul>
+            
+        </div>
+    </div>
+         <div id="favorite-character-more" class="extra-content" style="display: none;">
+            <div class="title-with-icon">
+                <img src="树.png" alt="Icon 1" />
+                <h3 class="custom-underline">我的GALAXY农场</h3>
+            </div>
+            <!-- 图片放这里 -->
+            <img src="121.png" alt="角色图片" />
+            <img src="122.jpg" alt="角色图片" />
+            <div class="text-container">
+                <!-- 文本放这里 -->
+                <h3>当前成就</h3>
+                <ul>          
+                    <li><strong>在星露谷住的天数:495，第5年夏季19日</strong></li>
+                    <li><strong>目前持有现金:4.515.443金</strong></li>
+                    <li><strong>迈出的步数:490958</strong></li>
+                    <li><strong>送出的礼物:243</strong></li>
+                </ul>
+            </div>
+
+            <div class="title-with-icon">
+                <img src="冰淇淋.jpg" alt="Icon 1" />
+                <h3 class="custom-underline">我最爱的角色</h3>
+            </div>
+            <img src="海莉.jpg" alt="Icon" />
+            <div class="text-container">
+                <!-- 文本放这里 -->
+                <h3>海莉的个人简介</h3>
+                <h4>海莉居住地：</h4>
+                <div class="content-with-icon">
+                    <img src="柳巷2号.jpg" alt="Icon" />
+                    <ul>
+                        <li>地址位于鹈鹕镇柳巷2号</li>
+                        <li>现在和姐姐艾米丽一起生活</li>
+                        <li>这是她父母留下的房子，她父母一直在世界旅行</li>
+                    </ul>
+                </div>
+                <h4>性格特点：</h4>
+                <div class="content-with-icon">
+                    <img src="海莉2.jpg" alt="Icon" />
+                    <ul>
+                        <li>十分漂亮，喜欢新潮事物，有些“娇生惯养”，但是风趣优雅且开放</li>
+                        <li>性格有些自负，常常以自我为中心</li>
+                        <li>朋友是亚历克斯</li>
+                    </ul>
+                </div>
+                <h4>日程表：</h4>
+                <div class="content-with-icon">
+                    <ul>
+                        <li>
+                            春季和秋季的大部分时间，海莉都会前往社区中心旁边的喷泉附近散步，周一则在玛妮牧场南面的河边拍照。
+                        </li>
+                        <li>夏季的海莉几乎每天都会前往亚历克斯的冰淇淋小摊。</li>
+                        <li>冬天她则是整日待在家里，也是最容易找到海莉的季节。在冬季9号的体检日她会前往哈维的诊所。</li>
+                    </ul>
+                </div>
+                <h4>礼物喜好：</h4>
+                <div class="content-with-icon">
+                    <ul>
+                        <li>
+                            最喜欢的礼物有椰子<img src="椰子.jpg" alt="Icon" />、水果沙拉<img src="水果沙拉.jpg" alt="Icon" />、粉红蛋糕<img src="粉红蛋糕.jpg" alt="Icon" />、向日葵<img src="向日葵.jpg" alt="Icon" />
+                        </li>
+                        <li>夏季的海莉几乎每天都会前往亚历克斯的冰淇淋小摊。</li>
+                        <li>冬天她则是整日待在家里，也是最容易找到海莉的季节。在冬季9号的体检日她会前往哈维的诊所。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="music-more" class="extra-content" style="display: none;">
+            <div class="title-with-icon">
+                <img src="宝箱.png" alt="Icon 1" />
+                <h3>主题音乐</h3>
+
+            </div>
+            <p>精选了星露谷主题曲、小镇音乐、爷爷的回忆、矿井以及四季的主题曲。</p>
+            <div class="text-container">
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑1封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Stardew Valley Overture</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Stardew Valley Overture.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Cloudy Country</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Cloudy Country.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Grandpa's Theme'</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="grandpa.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Mines(Star Lumpy)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Mines.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Spring(Itis a Big World Outside)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Spring(It's a Big World Outside).mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Summer(Tropicala)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Summer.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Fall(Ghost Synth)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="fall.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Winter(Nocturne of Ice)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Winter.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="feedback-more" class="extra-content" style="display: none;">
+                <div class="title-with-icon">
+                    <img src="黄水仙.jpg" alt="Icon 1" />
+                    <h3>留言板</h3>
+                </div>
+                <form id="message-form">
+                    <textarea id="message-input" placeholder="在这里输入您的留言..." rows="4"></textarea>
+                    <button type="submit" id="submit-btn">提交留言</button>
+                </form>
+                <!-- 模态框（Modal） -->
+                <div id="myModal" class="modal">
+                    <!-- 模态内容 -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>您的留言已提交成功！</p>
+                    </div>
+                </div>
+                <ul id="messages-list">
+                    <!-- 新提交的留言将被添加到这里 -->
+                </ul>
+        </div>
+
+            <!--底部版权栏-->
+        <footer>
+                <p>© GALAXY FARM from BennyChoi. All rights reserved.</p>
+        </footer>
+
+
+            <script src="Script1.js"></script>
+
+</body>
+</html>
+
+
