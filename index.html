@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Stardew Valley Diary</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部平铺的图片 -->
+    <div id="top-banner" class="top-banner">
+        <!-- 按钮直接放在div内部以利于布局定位 -->
+        <button id="prev-btn">&#10094;</button> <!-- 使用HTML字符代码添加箭头图标 -->
+        <button id="next-btn">&#10095;</button>
+    </div>
+    <!-- 主内容区 -->
+    <div class="container" id="main-content">
+        <div class="content-section">
+            <h2 data-section="mylogo"></h2>
+            <img src="灰鸡.png" alt="Icon" />
+        </div>
+        <div class="content-section">
+            <h2 data-section="introduction" class="active-header">Game Introduction</h2>
+        </div>
+
+        <div class="content-section">
+
+            <h2 data-section="favorite-character" class="active-header">Character Introduction</h2>
+        </div>
+
+        <div class="content-section">
+            <h2 data-section="music" class="active-header">Music Sharing</h2>
+        </div>
+
+        <div class="content-section">
+            <h2 data-section="feedback" class="active-header">Message Board</h2>
+        </div>
+    </div>
+    <!-- 用于显示额外内容的容器 -->
+    <div id="introduction-more" class="extra-content" style="display: none;">
+        <div class="title-with-icon">
+            <img src="星之果实.jpg" alt="Icon" />
+            <h3 class="custom-underline">About the Game</h3>
+        </div>
+        <div class="text-container">
+            <!-- 引言段落 -->
+            <p>
+                Stardew Valley is an independently developed business simulation game designed and developed by ConcernedApe (Eric Barone).
+            </p>
+
+            <!-- 故事背景 -->
+            <p>
+                The story of the game takes place in Stardew Valley, a place where the protagonist, overwhelmed by city life, inherits an abandoned farm from his grandfather and decides to come. The player's goal is to start from scratch, manage and restore the land to its former glory. By planting crops, raising animals, mining, fishing, collecting resources, and establishing friendly relations with the residents of the village, the player can gradually expand the farm, improve the quality of personal life, and explore the surrounding environment and secrets.
+            </p>
+        </div>
+        <!-- 游戏特色标题 -->
+        <img src="作者.jpg" alt="封面">
+        <div class="title-with-icon">
+            <img src="咖啡.jpg" alt="Icon" />
+            <h3>Game Features</h3>
+        </div>
+        <div class="text-container">
+            <!-- 游戏特色列表 -->
+            <ul>
+                <li><strong>Diversified Farm Operations:</strong>Players can freely choose to grow various crops, raise animals and build farm facilities. Each season has different crops to grow, as well as a variety of ways to expand and beautify your farm.</li>
+                <li><strong>Character Interaction and Development:</strong>There are more than 30 NPCs in Stardew Valley, each with their own story, schedule, and interests. By communicating with them, players can develop friendships, and even develop romantic relationships with some characters, and eventually get married and have children.</li>
+                <li><strong>Exploration and Adventure:</strong>The game includes a large dungeon system distributed in mines, where players can fight, explore and search for precious resources.</li>
+                <li><strong>Seasonal festivals and events:</strong>The village will hold various festivals and events according to the changes of the seasons, in which players can participate to interact, win prizes and deepen their relationships with the villagers.</li>
+                <li><strong>Customize and create:</strong>Players can freely customize their character's appearance, farm layout, and even the decoration of their home. In addition, the game supports MOD, which allows players to add new items, features, and gameplay elements.</li>
+            </ul>
+
+            <!-- 结尾段落 -->
+            <p>
+                Overall, Stardew Valley is a game with relaxing healing elements. It is not just about farming, but also an opportunity for players to escape the hustle and bustle of reality and experience the quiet life in the countryside. Whether exploring every corner of Stardew Valley alone or sharing the fun with friends online, this game can provide a unique and unforgettable experience.
+            </p>
+        </div>
+        <div class="title-with-icon">
+            <img src="杨桃.jpg" alt="Icon" />
+            <h3>Off-site navigation</h3>
+        </div>
+        <div class="external-links">        
+                <ul>
+                    <li>
+                        <a href="https://www.stardewvalley.net/" target="_blank">
+                            <img src="五彩贝壳.jpg" alt="Icon 1" />Stardew Valley Official Website
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://xinglugu.huijiwiki.com/wiki/" target="_blank">
+                            <img src="铱矿石.png" alt="Icon 2" />Stardew Valley Wiki
+                        </a>
+                    </li>
+                </ul>
+            
+        </div>
+    </div>
+         <div id="favorite-character-more" class="extra-content" style="display: none;">
+            <div class="title-with-icon">
+                <img src="树.png" alt="Icon 1" />
+                <h3 class="custom-underline">My GALAXY Farm</h3>
+            </div>
+            <!-- 图片放这里 -->
+            <img src="autumn514.png" alt="角色图片" />
+            <img src="122.jpg" alt="角色图片" />
+            <div class="text-container">
+                <!-- 文本放这里 -->
+                <h3>Current achievements</h3>
+                <ul>
+                    <li><strong>Days lived in Stardew Valley: 518, 14th day of autumn in the 5th year</strong></li>
+                    <li><strong>Number of steps taken: 518318</strong></li>
+                    <li><strong>Gifts given: 246</strong></li>
+                    <li><strong>Plots hoed: 3588</strong></li>
+                </ul>
+            </div>
+
+            <div class="title-with-icon">
+                <img src="冰淇淋.jpg" alt="Icon 1" />
+                <h3 class="custom-underline">My favorite character</h3>
+            </div>
+            <img src="海莉.jpg" alt="Icon" />
+            <div class="text-container">
+                <!-- 文本放这里 -->
+                <h3>Hailey's personal profile</h3>
+                <h4>Hailey's place of residence:</h4>
+                <div class="content-with-icon">
+                    <img src="柳巷2号.jpg" alt="Icon" />
+                    <ul>
+                        <li>The address is 2 Willow Lane, Pelican Town</li>
+                        <li>Now living with her sister Emily</li>
+                        <li>This is the house left by her parents, who have been traveling around the world</li>
+                    </ul>
+                </div>
+                <h4>Personality traits:</h4>
+                <div class="content-with-icon">
+                    <img src="海莉2.jpg" alt="Icon" />
+                    <ul>
+                        <li>Very pretty, likes trendy things, a little "spoiled", but funny, elegant and open</li>
+                        <li>Somewhat conceited, often self-centered</li>
+                        <li>Friend is Alex</li>
+                    </ul>
+                </div>
+                <h4>Schedule:</h4>
+                <div class="content-with-icon">
+                    <ul>
+                        <li>
+                            Most of the time in spring and fall, Hailey walks near the fountain next to the community center, and on Mondays, she takes photos by the river south of Marnie Ranch.
+                        </li>
+                        <li>Hailey goes to Alex's ice cream stand almost every day in the summer. </li>
+                        <li>Winter is the easiest season to find Hailey, as she stays at home all day. On the 9th of winter, she goes to Harvey's clinic for a checkup. </li>
+                    </ul>
+                </div>
+                <h4>Gift preferences:</h4>
+                <div class="content-with-icon">
+                    <ul>
+                        <li>
+                            Her favorite gifts are coconut<img src="Coconut.jpg" alt="Icon" />, fruit salad<img src="Fruit salad.jpg" alt="Icon" />, pink cake<img src="Pink cake.jpg" alt="Icon" />, and sunflower<img src="Sunflower.jpg" alt="Icon" />
+                        </li>
+                        <li>Hailey goes to Alex's ice cream stand almost every day in the summer. </li>
+                        <li>In the winter, she stays at home all day, which is also the easiest season to find Haley. On the 9th of winter, she will go to Harvey's clinic for a physical examination. </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="music-more" class="extra-content" style="display: none;">
+            <div class="title-with-icon">
+                <img src="宝箱.png" alt="Icon 1" />
+                <h3>Theme Music</h3>
+
+            </div>
+            <p>A selection of Stardew Valley theme songs, Small Town Music, Grandpa's Memories, The Mine, and the Four Seasons theme songs.</p>
+            <div class="text-container">
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑1封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Stardew Valley Overture</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Stardew Valley Overture.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>cloudycountry</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="cloudycountry.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Grandpa's Theme'</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="grandpa.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Mines(Star Lumpy)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Mines.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Spring(Itis a Big World Outside)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Spring(It's a Big World Outside).mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Summer(Tropicala)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Summer.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Fall(Ghost Synth)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="fall.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+                <div class="music-item">
+                    <div class="album-cover">
+                        <img src="专辑图.jpg" alt="专辑2封面">
+                    </div>
+                    <div class="music-info">
+                        <h3>Winter(Nocturne of Ice)</h3>
+                        <p>ConcernedApe</p>
+                        <audio controls>
+                            <source src="Winter.mp3" type="audio/mp3">
+                            您的浏览器不支持audio标签。
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="feedback-more" class="extra-content" style="display: none;">
+                <div class="title-with-icon">
+                    <img src="黄水仙.jpg" alt="Icon 1" />
+                    <h3>Message Board</h3>
+                </div>
+                <form id="message-form">
+                    <textarea id="message-input" placeholder="Enter your message here..." rows="4"></textarea>
+                    <button type="submit" id="submit-btn">Submit a message</button>
+                </form>
+                <!-- 模态框（Modal） -->
+                <div id="myModal" class="modal">
+                    <!-- 模态内容 -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Your message has been submitted successfully!</p>
+                    </div>
+                </div>
+                <ul id="messages-list">
+                    <!-- 新提交的留言将被添加到这里 -->
+                </ul>
+        </div>
+
+            <!--底部版权栏-->
+        <footer>
+                <p>© GALAXY FARM from BennyChoi. All rights reserved.</p>
+        </footer>
+
+
+            <script src="index.js"></script>
+
+</body>
+</html>
+
+
