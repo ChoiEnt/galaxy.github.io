@@ -157,23 +157,30 @@ window.onclick = function (event) {
 }
 
 // 获取游戏元素
-const crop = document.getElementById('crop');
-const scoreBoard = document.getElementById('score');
-let score = 0;
+// 获取游戏元素
+document.addEventListener('DOMContentLoaded', () => {
+    const crop = document.getElementById('crop');
+    const scoreBoard = document.getElementById('score');
+    let score = 0;
 
-// 种植事件
-crop.addEventListener('click', () => {
-    // 点击时随机改变作物位置
-    const randomX = Math.random() * 80 + 10; // 10% 到 90%
-    const randomY = Math.random() * 80 + 10;
-    crop.style.position = 'absolute';
-    crop.style.left = `${randomX}%`;
-    crop.style.top = `${randomY}%`;
+    // 确保元素存在，防止加载错误
+    if (crop && scoreBoard) {
+        // 点击作物种植
+        crop.addEventListener('click', () => {
+            const randomX = Math.random() * 80 + 10; // 10% 到 90%
+            const randomY = Math.random() * 80 + 10;
 
-    // 更新分数
-    score++;
-    scoreBoard.textContent = `Score: ${score}`;
+            crop.style.position = 'absolute';
+            crop.style.left = `${randomX}%`;
+            crop.style.top = `${randomY}%`;
+
+            // 更新分数
+            score++;
+            scoreBoard.textContent = `Score: ${score}`;
+        });
+    }
 });
+
 
 
 
