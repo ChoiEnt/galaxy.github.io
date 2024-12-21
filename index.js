@@ -155,15 +155,26 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-let score = 0; // 初始积分
-const crop = document.getElementById("crop"); // 获取作物图片
-const scoreDisplay = document.getElementById("score"); // 获取积分显示的元素
 
-    // 点击作物时增加积分
-crop.addEventListener("click", () => {
+// 获取游戏元素
+const crop = document.getElementById('crop');
+const scoreBoard = document.getElementById('score');
+let score = 0;
+
+// 种植事件
+crop.addEventListener('click', () => {
+    // 点击时随机改变作物位置
+    const randomX = Math.random() * 80 + 10; // 10% 到 90%
+    const randomY = Math.random() * 80 + 10;
+    crop.style.position = 'absolute';
+    crop.style.left = `${randomX}%`;
+    crop.style.top = `${randomY}%`;
+
+    // 更新分数
     score++;
-    scoreDisplay.textContent = `Score: ${score}`; // 更新积分显示
+    scoreBoard.textContent = `Score: ${score}`;
 });
+
 
 
 
