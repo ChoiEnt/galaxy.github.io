@@ -25,7 +25,7 @@
 
         <div class="content-section">
 
-            <h2 data-section="favorite-character" class="active-header">Character Introduction</h2>
+            <h2 data-section="Mini Game" class="active-header">Character Introduction</h2>
         </div>
 
         <div class="content-section">
@@ -93,12 +93,6 @@
                 </ul>
         </div>
         </div>
-        <div id="game-container" style="display: none;">
-            <h3>Click to Plant!</h3>
-            <div id="score">Score: 0</div>
-            <img id="crop" src="树.png" alt="Crop" />
-        </div>
-        <button onclick="document.getElementById('game-container').style.display = 'block'">Play Game</button>
 
 
          <div id="favorite-character-more" class="extra-content" style="display: none;">
@@ -106,6 +100,12 @@
                 <img src="树.png" alt="Icon 1" />
                 <h3 class="custom-underline">My GALAXY Farm</h3>
             </div>
+            <div id="game-container" style="display: none;">
+                <h3>Click to Plant!</h3>
+                <div id="score">Score: 0</div>
+                <img id="crop" src="树.png" alt="Crop" />
+            </div>
+            <button onclick="document.getElementById('game-container').style.display = 'block'">Play Game</button>
             <!-- 图片放这里 -->
             <img src="autumn514.png" alt="角色图片" />
             <img src="122.jpg" alt="角色图片" />
@@ -168,6 +168,7 @@
                 </div>
             </div>
         </div>
+    
         <div id="music-more" class="extra-content" style="display: none;">
             <div class="title-with-icon">
                 <img src="宝箱.png" alt="Icon 1" />
