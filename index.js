@@ -124,26 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function addMessageToList(message) {
-    // 创建一个新的留言项
-    var newMessageItem = document.createElement("li");
-    newMessageItem.textContent = message;  // 设置留言文本
-
-    // 将留言项添加到列表中
-    document.getElementById("messages-list").appendChild(newMessageItem);
-}
-
-// 获取模态框元素
-var modal = document.getElementById("myModal");
-
-// 获取 <span> 元素，用来关闭模态框
-var span = document.getElementsByClassName("close")[0];
-
-// 显示模态框
-function showMessageModal() {
-    modal.style.display = "block";
-}
-
 // 点击 <span> (x), 关闭模态框
 span.onclick = function () {
     modal.style.display = "none";
