@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const headers = document.querySelectorAll('.content-section h2');
 
     function hideAllContents() {
-        // Òş²ØËùÓĞ¶îÍâµÄÄÚÈİ²¿·Ö
+        // éšè—æ‰€æœ‰é¢å¤–çš„å†…å®¹éƒ¨åˆ†
         document.querySelectorAll('.extra-content').forEach(content => {
             content.style.display = 'none';
         });
     }
 
     function deactivateAllHeaders() {
-        // ½«ËùÓĞheaderµÄ×ÖÌå´ÖÏ¸»Ö¸´Ä¬ÈÏÖµ
+        // å°†æ‰€æœ‰headerçš„å­—ä½“ç²—ç»†æ¢å¤é»˜è®¤å€¼
         headers.forEach(header => {
             header.classList.remove('active-header');
         });
@@ -19,15 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     headers.forEach(header => {
         header.addEventListener('click', () => {
-            // Ê×ÏÈÒş²ØËùÓĞÄÚÈİ²¿·ÖºÍÇå³ıËùÓĞheaderµÄ¼¤»î×´Ì¬
+            // é¦–å…ˆéšè—æ‰€æœ‰å†…å®¹éƒ¨åˆ†å’Œæ¸…é™¤æ‰€æœ‰headerçš„æ¿€æ´»çŠ¶æ€
             hideAllContents();
             deactivateAllHeaders();
 
-            // ÏÔÊ¾±»µã»÷µÄ h2 ¶ÔÓ¦µÄÄÚÈİ²¿·Ö
+            // æ˜¾ç¤ºè¢«ç‚¹å‡»çš„ h2 å¯¹åº”çš„å†…å®¹éƒ¨åˆ†
             const section = header.getAttribute('data-section');
             const contentElement = document.getElementById(`${section}-more`);
 
-            // ¼¤»î±»µã»÷µÄ h2
+            // æ¿€æ´»è¢«ç‚¹å‡»çš„ h2
             header.classList.add('active-header');
 
             if (contentElement) {
@@ -41,118 +41,129 @@ var images = [
     '112.jpg', '113.jpeg', '120.jpeg', '115.png',
     '116.jpg', '117.jpeg', '118.jpeg', '119.png', '114.jpeg'
 ];
-var currentIndex = 0; // µ±Ç°Í¼Æ¬Ë÷Òı
-var slideInterval; // ÓÃÓÚ´æ´¢×Ô¶¯ÇĞ»»µÄ¶¨Ê±Æ÷
+var currentIndex = 0; // å½“å‰å›¾ç‰‡ç´¢å¼•
+var slideInterval; // ç”¨äºå­˜å‚¨è‡ªåŠ¨åˆ‡æ¢çš„å®šæ—¶å™¨
 
-// ÉèÖÃ±³¾°Í¼Æ¬º¯Êı
+// è®¾ç½®èƒŒæ™¯å›¾ç‰‡å‡½æ•°
 function setBackground(index) {
     var imageUrl = `url('${images[index]}')`;
     document.getElementById('top-banner').style.backgroundImage = imageUrl;
 }
 
-// ÇĞ»»µ½ÏÂÒ»ÕÅÍ¼Æ¬µÄº¯Êı
+// åˆ‡æ¢åˆ°ä¸‹ä¸€å¼ å›¾ç‰‡çš„å‡½æ•°
 function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
     setBackground(currentIndex);
 }
 
-// ¿ªÆô×Ô¶¯²¥·Å
+// å¼€å¯è‡ªåŠ¨æ’­æ”¾
 function startSlideShow() {
-    slideInterval = setInterval(nextImage, 3000); // Ã¿4ÃëÇĞ»»Ò»´ÎÍ¼Æ¬
+    slideInterval = setInterval(nextImage, 3000); // æ¯4ç§’åˆ‡æ¢ä¸€æ¬¡å›¾ç‰‡
 }
 
-// Í£Ö¹×Ô¶¯²¥·Å
+// åœæ­¢è‡ªåŠ¨æ’­æ”¾
 function stopSlideShow() {
     clearInterval(slideInterval);
 }
 
-// ÏÔÊ¾³õÊ¼»¯Í¼Æ¬
+// æ˜¾ç¤ºåˆå§‹åŒ–å›¾ç‰‡
 setBackground(currentIndex);
 
-// Æô¶¯×Ô¶¯²¥·Å
+// å¯åŠ¨è‡ªåŠ¨æ’­æ”¾
 startSlideShow();
 
-// ÉÏÒ»ÕÅÍ¼Æ¬°´Å¥¼àÌı
+// ä¸Šä¸€å¼ å›¾ç‰‡æŒ‰é’®ç›‘å¬
 document.getElementById('prev-btn').addEventListener('click', function () {
-    stopSlideShow(); // Í£Ö¹×Ô¶¯²¥·Å
+    stopSlideShow(); // åœæ­¢è‡ªåŠ¨æ’­æ”¾
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     setBackground(currentIndex);
-    startSlideShow(); // ÖØĞÂ¿ªÊ¼×Ô¶¯²¥·Å
+    startSlideShow(); // é‡æ–°å¼€å§‹è‡ªåŠ¨æ’­æ”¾
 });
 
-// ÏÂÒ»ÕÅÍ¼Æ¬°´Å¥¼àÌı
+// ä¸‹ä¸€å¼ å›¾ç‰‡æŒ‰é’®ç›‘å¬
 document.getElementById('next-btn').addEventListener('click', function () {
-    stopSlideShow(); // Í£Ö¹×Ô¶¯²¥·Å
+    stopSlideShow(); // åœæ­¢è‡ªåŠ¨æ’­æ”¾
     nextImage();
-    startSlideShow(); // ÖØĞÂ¿ªÊ¼×Ô¶¯²¥·Å
+    startSlideShow(); // é‡æ–°å¼€å§‹è‡ªåŠ¨æ’­æ”¾
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Ò³Ãæ¼ÓÔØÊ±£¬³¢ÊÔ´Ó LocalStorage ¼ÓÔØ²¢ÏÔÊ¾ÁôÑÔ
+    // é¡µé¢åŠ è½½æ—¶ï¼Œå°è¯•ä» LocalStorage åŠ è½½å¹¶æ˜¾ç¤ºç•™è¨€
     const savedMessages = JSON.parse(localStorage.getItem('messages')) || [];
     savedMessages.forEach(message => addMessageToList(message));
 
     document.getElementById('message-form').addEventListener('submit', function (e) {
-        e.preventDefault(); // ×èÖ¹±íµ¥µÄÄ¬ÈÏÌá½»ĞĞÎª
+        e.preventDefault(); // é˜»æ­¢è¡¨å•çš„é»˜è®¤æäº¤è¡Œä¸º
 
-        // »ñÈ¡ÓÃ»§ÊäÈëµÄÁôÑÔÄÚÈİ
+        // è·å–ç”¨æˆ·è¾“å…¥çš„ç•™è¨€å†…å®¹
         var messageInput = document.getElementById('message-input');
         var message = messageInput.value.trim();
 
-        // È·±£ÁôÑÔ²»Îª¿Õ
+        // ç¡®ä¿ç•™è¨€ä¸ä¸ºç©º
         if (message) {
             addMessageToList(message);
 
-            // ¸üĞÂLocalStorage
+            // æ›´æ–°LocalStorage
             const messages = JSON.parse(localStorage.getItem('messages')) || [];
             messages.push(message);
             localStorage.setItem('messages', JSON.stringify(messages));
 
-            // ÏÔÊ¾Ìá½»³É¹¦µÄÌáÊ¾
+            // æ˜¾ç¤ºæäº¤æˆåŠŸçš„æç¤º
             var messageSuccess = document.getElementById('message-success');
             messageSuccess.style.display = 'block';
 
-            // Çå¿ÕÊäÈë¿ò£¬ÒÔ±ãÊäÈëĞÂµÄÁôÑÔ
+            // æ¸…ç©ºè¾“å…¥æ¡†ï¼Œä»¥ä¾¿è¾“å…¥æ–°çš„ç•™è¨€
             messageInput.value = '';
 
             setTimeout(() => {
                 messageSuccess.style.display = 'none';
-            }, 5000); // 5ÃëºóÒş²Ø³É¹¦ÌáÊ¾
+            }, 5000); // 5ç§’åéšè—æˆåŠŸæç¤º
         } else {
-            alert("ÇëÏÈÊäÈëÁôÑÔÄÚÈİ£¡");
+            alert("è¯·å…ˆè¾“å…¥ç•™è¨€å†…å®¹ï¼");
         }
     });
 });
 
 function addMessageToList(message) {
-    // ´´½¨Ò»¸öĞÂµÄÁôÑÔÏî
+    // åˆ›å»ºä¸€ä¸ªæ–°çš„ç•™è¨€é¡¹
     var newMessageItem = document.createElement("li");
-    newMessageItem.textContent = message;  // ÉèÖÃÁôÑÔÎÄ±¾
+    newMessageItem.textContent = message;  // è®¾ç½®ç•™è¨€æ–‡æœ¬
 
-    // ½«ÁôÑÔÏîÌí¼Óµ½ÁĞ±íÖĞ
+    // å°†ç•™è¨€é¡¹æ·»åŠ åˆ°åˆ—è¡¨ä¸­
     document.getElementById("messages-list").appendChild(newMessageItem);
 }
 
-// »ñÈ¡Ä£Ì¬¿òÔªËØ
+// è·å–æ¨¡æ€æ¡†å…ƒç´ 
 var modal = document.getElementById("myModal");
 
-// »ñÈ¡ <span> ÔªËØ£¬ÓÃÀ´¹Ø±ÕÄ£Ì¬¿ò
+// è·å– <span> å…ƒç´ ï¼Œç”¨æ¥å…³é—­æ¨¡æ€æ¡†
 var span = document.getElementsByClassName("close")[0];
 
-// ÏÔÊ¾Ä£Ì¬¿ò
+// æ˜¾ç¤ºæ¨¡æ€æ¡†
 function showMessageModal() {
     modal.style.display = "block";
 }
 
-// µã»÷ <span> (x), ¹Ø±ÕÄ£Ì¬¿ò
+// ç‚¹å‡» <span> (x), å…³é—­æ¨¡æ€æ¡†
 span.onclick = function () {
     modal.style.display = "none";
 }
 
-// µã»÷Ä£Ì¬¿òÍâµÄÇøÓò£¬Ò²ÄÜ¹Ø±ÕÄ£Ì¬¿ò
+// ç‚¹å‡»æ¨¡æ€æ¡†å¤–çš„åŒºåŸŸï¼Œä¹Ÿèƒ½å…³é—­æ¨¡æ€æ¡†
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
+let score = 0; // åˆå§‹ç§¯åˆ†
+const crop = document.getElementById("crop"); // è·å–ä½œç‰©å›¾ç‰‡
+const scoreDisplay = document.getElementById("score"); // è·å–ç§¯åˆ†æ˜¾ç¤ºçš„å…ƒç´ 
+
+    // ç‚¹å‡»ä½œç‰©æ—¶å¢åŠ ç§¯åˆ†
+crop.addEventListener("click", () => {
+    score++;
+    scoreDisplay.textContent = `Score: ${score}`; // æ›´æ–°ç§¯åˆ†æ˜¾ç¤º
+});
+
+
 
