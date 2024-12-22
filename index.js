@@ -136,7 +136,6 @@ window.onclick = function (event) {
     }
 }
 
-// 获取游戏元素
 document.addEventListener('DOMContentLoaded', () => {
         const gameContainer = document.getElementById('game-container');
         const startButton = document.getElementById('start-game');
@@ -144,21 +143,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const scoreBoard = document.getElementById('score');
         let score = 0;
 
+        // 检查必要的元素是否存在
+        if (!gameContainer || !startButton || !crop || !scoreBoard) {
+            console.error("Some elements are missing. Please check your HTML.");
+            return;
+        }
+
         // 启动游戏按钮点击事件
         startButton.addEventListener('click', () => {
             gameContainer.style.display = 'block';
             startButton.style.display = 'none'; // 隐藏按钮
         });
 
-        // 确保元素存在，防止加载错误
-        if (crop && scoreBoard) {
-            // 点击作物种植
-            crop.addEventListener('click', () => {
-                moveCropRandomly(crop);
-                updateScore(scoreBoard, ++score);
-                playClickSound();
-            });
-        }
+        // 点击作物种植
+        crop.addEventListener('click', () => {
+            moveCropRandomly(crop);
+            updateScore(scoreBoard, ++score);
+            playClickSound();
+        });
 
         // 随机移动作物
         function moveCropRandomly(cropElement) {
@@ -178,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 播放点击音效
         function playClickSound() {
-            const audio = new Audio('click.mp3'); // 确保文件路径正确
+            const audio = new Audio('click.wav'); // 确保文件路径正确
             audio.play();
         }
     });
