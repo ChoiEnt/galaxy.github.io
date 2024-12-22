@@ -222,16 +222,16 @@ body {
         max-width: 100%;
     }
 
-#crop {
-        cursor: pointer;
-        width: 50px;
-        height: 50px;
-    }
+        #tic-tac-toe. crop {
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+            }
 
-#score {
-        font-size: 1.2rem;
-        margin-top: 10px;
-    }
+        #tic-tac-toe. score {
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
 
 .clickable-crop:hover {
         transform: scale(1.1); /* 鼠标悬停时稍微放大 */
