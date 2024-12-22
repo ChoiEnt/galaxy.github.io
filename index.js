@@ -137,29 +137,51 @@ window.onclick = function (event) {
 }
 
 // 获取游戏元素
-// 获取游戏元素
 document.addEventListener('DOMContentLoaded', () => {
-    const crop = document.getElementById('crop');
-    const scoreBoard = document.getElementById('score');
-    let score = 0;
+        const gameContainer = document.getElementById('game-container');
+        const startButton = document.getElementById('start-game');
+        const crop = document.getElementById('crop');
+        const scoreBoard = document.getElementById('score');
+        let score = 0;
 
-    // 确保元素存在，防止加载错误
-    if (crop && scoreBoard) {
-        // 点击作物种植
-        crop.addEventListener('click', () => {
+        // 启动游戏按钮点击事件
+        startButton.addEventListener('click', () => {
+            gameContainer.style.display = 'block';
+            startButton.style.display = 'none'; // 隐藏按钮
+        });
+
+        // 确保元素存在，防止加载错误
+        if (crop && scoreBoard) {
+            // 点击作物种植
+            crop.addEventListener('click', () => {
+                moveCropRandomly(crop);
+                updateScore(scoreBoard, ++score);
+                playClickSound();
+            });
+        }
+
+        // 随机移动作物
+        function moveCropRandomly(cropElement) {
             const randomX = Math.random() * 80 + 10; // 10% 到 90%
             const randomY = Math.random() * 80 + 10;
 
-            crop.style.position = 'absolute';
-            crop.style.left = `${randomX}%`;
-            crop.style.top = `${randomY}%`;
+            cropElement.style.position = 'absolute';
+            cropElement.style.left = `${randomX}%`;
+            cropElement.style.top = `${randomY}%`;
+            cropElement.style.transition = 'left 0.3s, top 0.3s'; // 添加平滑过渡效果
+        }
 
-            // 更新分数
-            score++;
-            scoreBoard.textContent = `Score: ${score}`;
-        });
-    }
-});
+        // 更新分数显示
+        function updateScore(scoreElement, newScore) {
+            scoreElement.textContent = `Score: ${newScore}`;
+        }
+
+        // 播放点击音效
+        function playClickSound() {
+            const audio = new Audio('click.mp3'); // 确保文件路径正确
+            audio.play();
+        }
+    });
 
 
 
