@@ -137,55 +137,77 @@ window.onclick = function (event) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-        const gameContainer = document.getElementById('game-container');
-        const startButton = document.getElementById('start-game');
-        const crop = document.getElementById('crop');
-        const scoreBoard = document.getElementById('score');
-        let score = 0;
+    const startScreen = document.getElementById('start-screen');
+    const gameScreen = document.getElementById('game-screen');
+    const playGameButton = document.getElementById('play-game');
+    const noThanksButton = document.getElementById('no-thanks');
+    const restartButton = document.getElementById('restart');
+    const cells = document.querySelectorAll('[data-cell]');
+    const winnerMessage = document.getElementById('winner-message');
+    let isXTurn = true; // 初始为 X 的回合
+    const board = Array(9).fill(null); // 游戏状态
 
-        // 检查必要的元素是否存在
-        if (!gameContainer || !startButton || !crop || !scoreBoard) {
-            console.error("Some elements are missing. Please check your HTML.");
-            return;
-        }
-
-        // 启动游戏按钮点击事件
-        startButton.addEventListener('click', () => {
-            gameContainer.style.display = 'block';
-            startButton.style.display = 'none'; // 隐藏按钮
-        });
-
-        // 点击作物种植
-        crop.addEventListener('click', () => {
-            moveCropRandomly(crop);
-            updateScore(scoreBoard, ++score);
-            playClickSound();
-        });
-
-        // 随机移动作物
-        function moveCropRandomly(cropElement) {
-            const randomX = Math.random() * 80 + 10; // 10% 到 90%
-            const randomY = Math.random() * 80 + 10;
-
-            cropElement.style.position = 'absolute';
-            cropElement.style.left = `${randomX}%`;
-            cropElement.style.top = `${randomY}%`;
-            cropElement.style.transition = 'left 0.3s, top 0.3s'; // 添加平滑过渡效果
-        }
-
-        // 更新分数显示
-        function updateScore(scoreElement, newScore) {
-            scoreElement.textContent = `Score: ${newScore}`;
-        }
-
-        // 播放点击音效
-        function playClickSound() {
-            const audio = new Audio('click.wav'); // 确保文件路径正确
-            audio.play();
-        }
+    // 显示游戏界面并隐藏开始界面
+    playGameButton.addEventListener('click', () => {
+        startScreen.style.display = 'none';
+        gameScreen.style.display = 'block';
     });
 
+    // 点击“不玩”按钮的行为
+    noThanksButton.addEventListener('click', () => {
+        startScreen.innerHTML = "<p>Maybe next time! 😊</p>";
+    });
 
+    // 玩家点击格子
+    cells.forEach((cell, index) => {
+        cell.addEventListener('click', () => {
+            if (board[index]) return; // 已被占用
 
+            board[index] = isXTurn ? 'X' : 'O'; // 更新状态
+            cell.textContent = board[index]; // 显示符号
+            cell.classList.add('taken');
 
+            if (checkWinner(board)) {
+                winnerMessage.style.display = 'block';
+                winnerMessage.textContent = `Player ${isXTurn ? 'X' : 'O'} Wins!`;
+                endGame();
+            } else if (board.every(Boolean)) {
+                winnerMessage.style.display = 'block';
+                winnerMessage.textContent = "It's a Draw!";
+                endGame();
+            }
 
+            isXTurn = !isXTurn; // 切换回合
+        });
+    });
+
+    // 重置游戏
+    restartButton.addEventListener('click', () => {
+        board.fill(null);
+        isXTurn = true;
+        winnerMessage.style.display = 'none';
+        restartButton.style.display = 'none';
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('taken');
+        });
+    });
+
+    // 检查胜利
+    function checkWinner(board) {
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // 横
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // 竖
+            [0, 4, 8], [2, 4, 6]            // 对角
+        ];
+        return winPatterns.some(pattern =>
+            pattern.every(index => board[index] && board[index] === board[pattern[0]])
+        );
+    }
+
+    // 禁用所有格子
+    function endGame() {
+        cells.forEach(cell => cell.classList.add('taken'));
+        restartButton.style.display = 'block';
+    }
+});
