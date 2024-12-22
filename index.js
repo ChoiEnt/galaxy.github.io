@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 图片轮播功能
     const images = [
-        './images/112.jpg', './images/113.jpeg', './images/120.jpeg', './images/115.png',
+        '112.jpg', '113.jpeg', './images/120.jpeg', './images/115.png',
         './images/116.jpg', './images/117.jpeg', './images/118.jpeg', './images/119.png', './images/114.jpeg'
     ];
     let currentIndex = 0;
