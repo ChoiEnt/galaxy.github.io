@@ -85,7 +85,7 @@ document.getElementById('next-btn').addEventListener('click', function () {
     stopSlideShow(); // 停止自动播放
     nextImage();
     startSlideShow(); // 重新开始自动播放
-});c'c'ccccc
+});
 
 // 点击 <span> (x), 关闭模态框
 span.onclick = function () {
