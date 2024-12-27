@@ -93,6 +93,7 @@ document.getElementById('next-btn').addEventListener('click', function () {
         };
     }
 
+document.addEventListener('DOMContentLoaded', () => {
     // Tic-Tac-Toe 游戏功能
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
@@ -195,3 +196,4 @@ document.getElementById('next-btn').addEventListener('click', function () {
     // 重启游戏
     restartButton.addEventListener('click', resetGame);
 });
+
