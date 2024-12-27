@@ -93,6 +93,7 @@ document.getElementById('next-btn').addEventListener('click', function () {
         };
     }
 
+    document.addEventListener('DOMContentLoaded', () => {
     // Tic-Tac-Toe 游戏功能
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
@@ -101,9 +102,15 @@ document.getElementById('next-btn').addEventListener('click', function () {
     const winnerMessage = document.getElementById('winner-message');
     const cells = document.querySelectorAll('[data-cell]');
     const restartButton = document.getElementById('restart');
-    let isXTurn = true;
-    const board = Array(9).fill(null);
+    const chooseXButton = document.getElementById('choose-x');
+    const chooseOButton = document.getElementById('choose-o');
+    
+    let isXTurn = true; // 当前回合是否为 X 的回合
+    let playerSymbol = 'X'; // 玩家默认符号
+    let computerSymbol = 'O'; // 电脑默认符号
+    const board = Array(9).fill(null); // 游戏棋盘
 
+    // 检查是否有获胜者
     function checkWinner() {
         const winPatterns = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -119,6 +126,7 @@ document.getElementById('next-btn').addEventListener('click', function () {
         return board.includes(null) ? null : 'Tie';
     }
 
+    // 重置游戏
     function resetGame() {
         board.fill(null);
         isXTurn = true;
@@ -129,20 +137,49 @@ document.getElementById('next-btn').addEventListener('click', function () {
         winnerMessage.style.display = 'none';
     }
 
-    playGameButton.addEventListener('click', () => {
+    // 电脑随机下棋
+    function computerMove() {
+        const emptyCells = board
+            .map((value, index) => (value === null ? index : null))
+            .filter(index => index !== null);
+        if (emptyCells.length === 0) return;
+
+        const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        board[randomIndex] = computerSymbol;
+        const cell = cells[randomIndex];
+        cell.textContent = computerSymbol;
+        cell.classList.add('taken');
+
+        const winner = checkWinner();
+        if (winner) {
+            winnerMessage.textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
+            winnerMessage.style.display = 'block';
+            return;
+        }
+        isXTurn = true; // 切换回玩家
+    }
+
+    // 玩家选择 X 或 O
+    chooseXButton.addEventListener('click', () => {
+        playerSymbol = 'X';
+        computerSymbol = 'O';
         startScreen.style.display = 'none';
         gameScreen.style.display = 'block';
     });
 
-    noThanksButton.addEventListener('click', () => {
-        startScreen.innerHTML = "<p>Maybe next time! 😊</p>";
+    chooseOButton.addEventListener('click', () => {
+        playerSymbol = 'O';
+        computerSymbol = 'X';
+        startScreen.style.display = 'none';
+        gameScreen.style.display = 'block';
     });
 
+    // 玩家点击单元格
     cells.forEach((cell, index) => {
         cell.addEventListener('click', () => {
-            if (board[index] || winnerMessage.style.display === 'block') return;
-            board[index] = isXTurn ? 'X' : 'O';
-            cell.textContent = board[index];
+            if (board[index] || winnerMessage.style.display === 'block' || !isXTurn) return;
+            board[index] = playerSymbol;
+            cell.textContent = playerSymbol;
             cell.classList.add('taken');
 
             const winner = checkWinner();
@@ -151,9 +188,11 @@ document.getElementById('next-btn').addEventListener('click', function () {
                 winnerMessage.style.display = 'block';
                 return;
             }
-            isXTurn = !isXTurn;
+            isXTurn = false; // 切换到电脑
+            setTimeout(computerMove, 500); // 电脑延迟下棋
         });
     });
 
+    // 重启游戏
     restartButton.addEventListener('click', resetGame);
 });
