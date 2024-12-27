@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
+     // Section 展开/隐藏功能
+    const headers = document.querySelectorAll('.content-section h2');
+
+    function hideAllContents() {
+        document.querySelectorAll('.extra-content').forEach(content => {
+            content.style.display = 'none';
+        });
+    }
+
+    function deactivateAllHeaders() {
+        headers.forEach(header => {
+            header.classList.remove('active-header');
+        });
+    }
+
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            hideAllContents();
+            deactivateAllHeaders();
+            const section = header.getAttribute('data-section');
+            const contentElement = document.getElementById(`${section}-more`);
+            header.classList.add('active-header');
+            if (contentElement) {
+                contentElement.style.display = 'block';
+            }
+        });
+    });
     // 初始化轮播
     const images = ['112.jpg', '113.jpeg', '120.jpeg', '115.png', '116.jpg', '117.jpeg', '118.jpeg', '119.png', '114.jpeg'];
     let currentIndex = 0;
