@@ -93,29 +93,28 @@ document.getElementById('next-btn').addEventListener('click', function () {
         };
     }
 
-    // Tic-Tac-Toe 游戏功能
+document.addEventListener('DOMContentLoaded', () => {
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
-    const playGameButton = document.getElementById('play-game');
-    const noThanksButton = document.getElementById('no-thanks');
-    const winnerMessage = document.getElementById('winner-message');
-    const cells = document.querySelectorAll('[data-cell]');
-    const restartButton = document.getElementById('restart');
     const chooseXButton = document.getElementById('choose-x');
     const chooseOButton = document.getElementById('choose-o');
+    const winnerMessage = document.getElementById('winner-message');
+    const turnIndicator = document.getElementById('turn-indicator');
+    const cells = document.querySelectorAll('[data-cell]');
+    const restartButton = document.getElementById('restart');
     
-    let isXTurn = true; // 当前回合是否为 X 的回合
-    let playerSymbol = 'X'; // 玩家默认符号
-    let computerSymbol = 'O'; // 电脑默认符号
-    const board = Array(9).fill(null); // 游戏棋盘
+    let isXTurn = true;
+    let playerSymbol = 'X';
+    let computerSymbol = 'O';
+    const board = Array(9).fill(null);
 
-    // 检查是否有获胜者
+    const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+
     function checkWinner() {
-        const winPatterns = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
-        ];
         for (const pattern of winPatterns) {
             const [a, b, c] = pattern;
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
@@ -125,45 +124,67 @@ document.getElementById('next-btn').addEventListener('click', function () {
         return board.includes(null) ? null : 'Tie';
     }
 
-    // 重置游戏
+    function updateTurnIndicator() {
+        turnIndicator.textContent = isXTurn ? 'Your Turn!' : 'Computer\'s Turn...';
+    }
+
+    function showWinnerMessage(winner) {
+        winnerMessage.textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
+        winnerMessage.style.display = 'block';
+    }
+
+    function placeMove(index, symbol) {
+        board[index] = symbol;
+        const cell = cells[index];
+        cell.textContent = symbol;
+        cell.classList.add('taken');
+
+        const winner = checkWinner();
+        if (winner) {
+            showWinnerMessage(winner);
+            return true;
+        }
+        return false;
+    }
+
+    function computerMove() {
+        const emptyCells = board
+            .map((value, index) => (value === null ? index : null))
+            .filter(index => index !== null);
+
+        for (const [a, b, c] of winPatterns) {
+            if (board[a] === computerSymbol && board[b] === computerSymbol && board[c] === null) return placeMove(c, computerSymbol);
+            if (board[a] === computerSymbol && board[c] === computerSymbol && board[b] === null) return placeMove(b, computerSymbol);
+            if (board[b] === computerSymbol && board[c] === computerSymbol && board[a] === null) return placeMove(a, computerSymbol);
+        }
+
+        for (const [a, b, c] of winPatterns) {
+            if (board[a] === playerSymbol && board[b] === playerSymbol && board[c] === null) return placeMove(c, computerSymbol);
+            if (board[a] === playerSymbol && board[c] === playerSymbol && board[b] === null) return placeMove(b, computerSymbol);
+            if (board[b] === playerSymbol && board[c] === playerSymbol && board[a] === null) return placeMove(a, computerSymbol);
+        }
+
+        const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        placeMove(randomIndex, computerSymbol);
+    }
+
     function resetGame() {
         board.fill(null);
         isXTurn = true;
         cells.forEach(cell => {
             cell.textContent = '';
-            cell.classList.remove('taken');
+            cell.classList.remove('taken', 'disabled');
         });
         winnerMessage.style.display = 'none';
+        updateTurnIndicator();
     }
 
-    // 电脑随机下棋
-    function computerMove() {
-        const emptyCells = board
-            .map((value, index) => (value === null ? index : null))
-            .filter(index => index !== null);
-        if (emptyCells.length === 0) return;
-
-        const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        board[randomIndex] = computerSymbol;
-        const cell = cells[randomIndex];
-        cell.textContent = computerSymbol;
-        cell.classList.add('taken');
-
-        const winner = checkWinner();
-        if (winner) {
-            winnerMessage.textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
-            winnerMessage.style.display = 'block';
-            return;
-        }
-        isXTurn = true; // 切换回玩家
-    }
-
-    // 玩家选择 X 或 O
     chooseXButton.addEventListener('click', () => {
         playerSymbol = 'X';
         computerSymbol = 'O';
         startScreen.style.display = 'none';
         gameScreen.style.display = 'block';
+        updateTurnIndicator();
     });
 
     chooseOButton.addEventListener('click', () => {
@@ -171,28 +192,22 @@ document.getElementById('next-btn').addEventListener('click', function () {
         computerSymbol = 'X';
         startScreen.style.display = 'none';
         gameScreen.style.display = 'block';
+        updateTurnIndicator();
     });
 
-    // 玩家点击单元格
     cells.forEach((cell, index) => {
         cell.addEventListener('click', () => {
             if (board[index] || winnerMessage.style.display === 'block' || !isXTurn) return;
-            board[index] = playerSymbol;
-            cell.textContent = playerSymbol;
-            cell.classList.add('taken');
-
-            const winner = checkWinner();
-            if (winner) {
-                winnerMessage.textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
-                winnerMessage.style.display = 'block';
-                return;
-            }
-            isXTurn = false; // 切换到电脑
-            setTimeout(computerMove, 500); // 电脑延迟下棋
+            if (placeMove(index, playerSymbol)) return;
+            isXTurn = false;
+            updateTurnIndicator();
+            setTimeout(() => {
+                computerMove();
+                isXTurn = true;
+                updateTurnIndicator();
+            }, 500);
         });
     });
 
-    // 重启游戏
     restartButton.addEventListener('click', resetGame);
-
-
+});
