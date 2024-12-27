@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Section 展开/隐藏功能
     const headers = document.querySelectorAll('.content-section h2');
 
     function hideAllContents() {
-        // 隐藏所有额外的内容部分
         document.querySelectorAll('.extra-content').forEach(content => {
             content.style.display = 'none';
         });
     }
 
     function deactivateAllHeaders() {
-        // 将所有header的字体粗细恢复默认值
         headers.forEach(header => {
             header.classList.remove('active-header');
         });
@@ -17,23 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     headers.forEach(header => {
         header.addEventListener('click', () => {
-            // 首先隐藏所有内容部分和清除所有header的激活状态
             hideAllContents();
             deactivateAllHeaders();
-
-            // 显示被点击的 h2 对应的内容部分
-            const section = header.getAttribute('content-section');
+            const section = header.getAttribute('data-section');
             const contentElement = document.getElementById(`${section}-more`);
-
-            // 激活被点击的 h2
             header.classList.add('active-header');
-
             if (contentElement) {
                 contentElement.style.display = 'block';
             }
         });
     });
-});
 
 var images = [
     '112.jpg', '113.jpeg', '120.jpeg', '115.png',
