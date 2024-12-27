@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-     // Section 展开/隐藏功能
+    // Section 展开/隐藏功能
     const headers = document.querySelectorAll('.content-section h2');
 
     function hideAllContents() {
@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 contentElement.style.display = 'block';
             }
         });
-         
+    });
+
     // 初始化轮播
     const images = ['112.jpg', '113.jpeg', '120.jpeg', '115.png', '116.jpg', '117.jpeg', '118.jpeg', '119.png', '114.jpeg'];
     let currentIndex = 0;
@@ -37,18 +38,37 @@ document.addEventListener('DOMContentLoaded', () => {
         setBackground(currentIndex);
     };
     let slideInterval = setInterval(nextImage, 3000);
+
     document.getElementById('prev-btn').addEventListener('click', () => {
         clearInterval(slideInterval);
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         setBackground(currentIndex);
         slideInterval = setInterval(nextImage, 3000);
     });
+
     document.getElementById('next-btn').addEventListener('click', () => {
         clearInterval(slideInterval);
         nextImage();
         slideInterval = setInterval(nextImage, 3000);
     });
+
     setBackground(currentIndex);
+
+    // 模态框逻辑
+    const modal = document.getElementById('myModal');
+    const span = document.querySelector('.close');
+
+    if (modal && span) {
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    }
 
     // 初始化游戏
     const startScreen = document.getElementById('start-screen');
@@ -67,10 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
         [0, 4, 8], [2, 4, 6]
     ];
 
-    const checkWinner = () => winPatterns.find(pattern => {
-        const [a, b, c] = pattern;
-        return board[a] && board[a] === board[b] && board[a] === board[c];
-    }) || (board.includes(null) ? null : 'Tie');
+    const checkWinner = () => {
+        for (const [a, b, c] of winPatterns) {
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                return board[a]; // 返回胜者
+            }
+        }
+        return board.includes(null) ? null : 'Tie'; // 没有空位则平局
+    };
 
     const updateTurnIndicator = () => {
         turnIndicator.textContent = isXTurn ? 'Your Turn!' : 'Computer\'s Turn...';
@@ -117,12 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gameScreen.style.display = 'block';
         updateTurnIndicator();
     });
+
     chooseOButton.addEventListener('click', () => {
         playerSymbol = 'O'; computerSymbol = 'X';
         startScreen.style.display = 'none';
         gameScreen.style.display = 'block';
         updateTurnIndicator();
     });
+
     cells.forEach((cell, index) => cell.addEventListener('click', () => {
         if (board[index] || winnerMessage.style.display === 'block' || !isXTurn) return;
         if (placeMove(index, playerSymbol)) return;
@@ -134,5 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateTurnIndicator();
         }, 500);
     }));
+
     restartButton.addEventListener('click', resetGame);
 });
