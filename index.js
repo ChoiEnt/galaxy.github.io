@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 初始化游戏 ===
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
-    const playgameButton = document.getElementById('play-game');
+    const playGameButton = document.getElementById('play-game');
+    const noThanksButton = document.getElementById('no-thanks');
     const chooseXButton = document.getElementById('choose-x');
     const chooseOButton = document.getElementById('choose-o');
     const winnerMessage = document.getElementById('winner-message');
@@ -92,6 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerSymbol = 'X';
     let computerSymbol = 'O';
     const board = Array(9).fill(null);
+    playGameButton.addEventListener('click', () => {
+    startScreen.style.display = 'none';
+    gameScreen.style.display = 'block';
+});
+
+    noThanksButton.addEventListener('click', () => {
+    startScreen.innerHTML = "<p>Maybe next time! 😊</p>";
+});
 
     const winPatterns = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
