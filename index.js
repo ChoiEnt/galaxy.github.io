@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 初始化游戏 ===
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
+    const playgameButton = document.getElementById('play-game');
     const chooseXButton = document.getElementById('choose-x');
     const chooseOButton = document.getElementById('choose-o');
     const winnerMessage = document.getElementById('winner-message');
