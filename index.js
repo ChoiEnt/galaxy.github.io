@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contentElement.style.display = 'block';
             }
         });
-    });
+         
     // 初始化轮播
     const images = ['112.jpg', '113.jpeg', '120.jpeg', '115.png', '116.jpg', '117.jpeg', '118.jpeg', '119.png', '114.jpeg'];
     let currentIndex = 0;
