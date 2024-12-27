@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             deactivateAllHeaders();
 
             // 显示被点击的 h2 对应的内容部分
-            const section = header.getAttribute('data-section');
+            const section = header.getAttribute('content-section');
             const contentElement = document.getElementById(`${section}-more`);
 
             // 激活被点击的 h2
